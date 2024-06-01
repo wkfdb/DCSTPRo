@@ -12,10 +12,9 @@
 The results are shown in the following:
 
 #### 
-| Method | 1% | 5% |10%|100%|
-| ---- | -------| ----- |----|----|
-| E2E Soft Teacher | 20.46 |30.74|34.04|44.5|
-| Ours | 23.00 |32.20|35.50|44.6|
+| Method | 1% | 2% | 5% |10%|100%|
+| ---- | -------| ---- | ----- |----|----|
+| Ours | 24.72 | 28.42 | 34.10 | 37.30 | 46.20 |
 
 #### 
 ## Usage
@@ -89,20 +88,4 @@ The core idea is to convert a new dataset to coco format. Details about it can b
 ```
 bash tools/dist_test.sh <CONFIG_FILE_PATH> <CHECKPOINT_PATH> <NUM_GPUS> --eval bbox --cfg-options model.test_cfg.rcnn.score_thr=<THR>
 ```
-### Inference
-  To inference with trained model and visualize the detection results:
 
-  ```shell script
-  # [IMAGE_FILE_PATH]: the path of your image file in local file system
-  # [CONFIG_FILE]: the path of a confile file
-  # [CHECKPOINT_PATH]: the path of a trained model related to provided confilg file.
-  # [OUTPUT_PATH]: the directory to save detection result
-  python demo/image_demo.py [IMAGE_FILE_PATH] [CONFIG_FILE] [CHECKPOINT_PATH] --output [OUTPUT_PATH]
-  ```
-  For example:
-  - Inference on single image with provided `R50` model:
-   ```shell script
-  python demo/image_demo.py /tmp/tmp.png configs/soft_teacher/soft_teacher_faster_rcnn_r50_caffe_fpn_coco_full_720k.py work_dirs/downloaded.model --output work_dirs/
-   ```
-
-  After the program completes, a image with the same name as input will be saved to `work_dirs`
